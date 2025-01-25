@@ -7,7 +7,7 @@ document.getElementById('login-form').addEventListener('submit', async function 
     const data = { username, password };
 
     try {
-        const response = await fetch('88.160.251.130:8080/login', {
+        const response = await fetch('http://88.160.251.130:1211/login/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
