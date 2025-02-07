@@ -1,0 +1,171 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Body */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    padding: 20px;
+}
+
+/* Header */
+h1 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+a {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    background: #fff;
+    color: #667eea;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+a:hover {
+    background: #5555d4;
+    color: white;
+}
+
+/* Table */
+table {
+    width: 100%;
+    max-width: 900px;
+    background: white;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: #667eea;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+/* Bouton Supprimer */
+button.delete-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button.delete-btn:hover {
+    background: #c0392b;
+}
+
+/* Message */
+#message {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: red;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    table {
+        font-size: 0.9rem;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+
+    a {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    button.delete-btn {
+        padding: 6px 10px;
+    }
+}
+
+/* Barre du haut */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 20px;
+}
+
+/* Bouton général */
+.btn {
+    padding: 10px 15px;
+    border: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Bouton emprunter */
+.btn {
+    background: #fff;
+    color: #667eea;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: #5555d4;
+    color: white;
+}
+
+/* Bouton déconnexion */
+.btn.logout {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn.logout:hover {
+    background: #c0392b;
+}
+
+/* Bouton Déconnexion en haut à gauche */
+#logout-btn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+#logout-btn:hover {
+    background: #c0392b;
+}

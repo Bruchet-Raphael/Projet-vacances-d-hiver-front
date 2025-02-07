@@ -3,10 +3,11 @@ document.getElementById('register-form').addEventListener('submit', async functi
 
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-    const errorMessage = document.getElementById('error-message');
+    const messageDiv = document.getElementById('message');
 
-    // Réinitialiser le message d'erreur
-    errorMessage.textContent = '';
+    // Réinitialiser le message
+    messageDiv.textContent = '';
+    messageDiv.className = '';
 
     const data = { username, password };
 
@@ -20,15 +21,21 @@ document.getElementById('register-form').addEventListener('submit', async functi
         });
 
         if (response.ok) {
-            alert('Utilisateur créé avec succès');
-            // Vous pouvez rediriger l'utilisateur vers une page de connexion ou autre
-            window.location.href = '/login.html'; // Exemple de redirection
+            messageDiv.textContent = 'Utilisateur créé avec succès !';
+            messageDiv.className = 'success';
+
+            // Rediriger vers la page de connexion après 2 secondes
+            setTimeout(() => {
+                window.location.href = '/index.html';
+            }, 2000);
         } else {
             const error = await response.json();
-            errorMessage.textContent = error.message || 'Une erreur est survenue. Veuillez réessayer.';
+            messageDiv.textContent = error.message || 'Une erreur est survenue. Veuillez réessayer.';
+            messageDiv.className = 'error';
         }
     } catch (error) {
         console.error('Erreur lors de la requête :', error);
-        errorMessage.textContent = 'Une erreur est survenue. Veuillez réessayer.';
+        messageDiv.textContent = 'Une erreur est survenue. Veuillez réessayer.';
+        messageDiv.className = 'error';
     }
 });
