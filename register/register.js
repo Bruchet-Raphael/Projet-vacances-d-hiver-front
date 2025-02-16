@@ -24,10 +24,10 @@ document.getElementById('register-form').addEventListener('submit', async functi
             messageDiv.textContent = 'Utilisateur créé avec succès !';
             messageDiv.className = 'success';
 
-            // Rediriger vers la page de connexion après 2 secondes
+            // Rediriger vers la page de connexion après 1 secondes
             setTimeout(() => {
                 window.location.href = '/index.html';
-            }, 2000);
+            }, 1000);
         } else {
             const error = await response.json();
             messageDiv.textContent = error.message || 'Une erreur est survenue. Veuillez réessayer.';

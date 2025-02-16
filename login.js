@@ -32,7 +32,7 @@ document.getElementById('login-form').addEventListener('submit', async function(
 
             // Rediriger vers la page "emprunt.html" après 2 secondes
             setTimeout(() => {
-                window.location.href = '/mes_emprunt.html';
+                window.location.href = '/mes_emprunt/';
             }, 2000);
         } else {
             const error = await response.json();
