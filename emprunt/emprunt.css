@@ -12,7 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #667eea, #764ba2); /* Fond dégradé comme ton style général */
+    background: linear-gradient(135deg, #000000, #2600ff);
 }
 
 /* Container */
