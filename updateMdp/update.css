@@ -15,8 +15,8 @@ body {
     background: linear-gradient(135deg, #000000, #2600ff);
 }
 
-/* Container */
-.emprunt-container {
+/* Containers */
+.login-container, .form-container {
     background: white;
     padding: 2rem;
     border-radius: 10px;
@@ -26,8 +26,8 @@ body {
     text-align: center;
 }
 
-/* Title */
-h1 {
+/* Headings */
+h1, h2 {
     color: #333;
     margin-bottom: 1rem;
 }
@@ -50,8 +50,7 @@ label {
     color: #555;
 }
 
-input,
-select {
+input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
@@ -60,14 +59,13 @@ select {
     transition: 0.3s ease-in-out;
 }
 
-input:focus,
-select:focus {
+input:focus {
     border-color: #667eea;
     outline: none;
     box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
 }
 
-/* Submit Button */
+/* Buttons */
 button {
     background: #667eea;
     color: white;
@@ -84,12 +82,15 @@ button:hover {
 }
 
 /* Links */
+p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
 a {
     color: #667eea;
     text-decoration: none;
     font-weight: bold;
-    display: inline-block;
-    margin-top: 1rem;
 }
 
 a:hover {
@@ -100,12 +101,12 @@ a:hover {
 #message {
     margin-top: 1rem;
     font-size: 0.9rem;
-    color: red;
+    color: green;
 }
 
 /* Responsive */
 @media (max-width: 480px) {
-    .emprunt-container {
+    .login-container, .form-container {
         width: 90%;
         padding: 1.5rem;
     }

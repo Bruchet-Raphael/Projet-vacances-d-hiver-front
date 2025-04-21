@@ -1,34 +1,53 @@
+document.addEventListener('DOMContentLoaded', async function () {
+    const materialSelect = document.getElementById('material');
+    const dateInput = document.getElementById('date');
+
+    // Afficher la date d’aujourd’hui (mais ne pas l'envoyer)
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.value = today;
+
+    try {
+        const response = await fetch('http://88.160.251.130:1211/materiels');
+        if (!response.ok) throw new Error("Erreur lors du chargement des matériels");
+        
+        const materiels = await response.json();
+        materiels.forEach(mat => {
+            const option = document.createElement('option');
+            option.value = mat.id;
+            option.textContent = mat.Nom;
+            materialSelect.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Erreur de chargement des matériels :', error);
+        alert('Impossible de charger les matériels disponibles.');
+    }
+});
+
 document.getElementById('emprunt-form').addEventListener('submit', async function(event) {
     event.preventDefault();
 
     const material = document.getElementById('material').value;
-    const date = document.getElementById('date').value;
     const messageDiv = document.getElementById('message');
-
-    // On récupère l'ID utilisateur à partir du token
-    const userId = localStorage.getItem('userId'); // Assurez-vous de stocker l'ID utilisateur lors de la connexion
+    const userId = localStorage.getItem('userId');
 
     if (!userId) {
         window.location.href = '/index.html';
         return;
     }
 
-    // Réinitialiser le message
     messageDiv.textContent = '';
     messageDiv.className = '';
 
-    if (!material || !date) {
-        messageDiv.textContent = 'Veuillez sélectionner un matériel et une date.';
+    if (!material) {
+        messageDiv.textContent = 'Veuillez sélectionner un matériel.';
         messageDiv.className = 'error';
         return;
     }
 
-    
-    // Construire le JSON avec id_user, materiel_emprunte et date_emprunt
     const data = {
-        id_user: userId,  // Assurez-vous que l'ID utilisateur est stocké dans le localStorage lors de la connexion
-        materielle: material,  // matériel emprunté en tant que varchar
-        date_emprunt: date  // Date en varchar
+        id_user: userId,
+        materielle: material
+        // date_emprunt n'est PAS envoyé ici
     };
 
     try {

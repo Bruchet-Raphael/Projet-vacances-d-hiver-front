@@ -10,21 +10,20 @@
 
     <!-- Bouton de déconnexion en haut à gauche -->
     <button id="logout-btn" class="btn logout">Déconnexion</button>
+    <button id="change-password-btn" class="btn change-password">Changer le mot de passe</button>
+    <!-- bouton pour acceder a la page ajouter du materiel-->
+    <button id="add-material-btn" class="btn add-material">Ajouter du matériel</button>   
 
     <h1>Mes Emprunts</h1>
-    
+
     <a href="/emprunt/" class="btn">Emprunter du matériel</a>
 
     <div id="message"></div>
 
     <table>
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nom d'utilisateur</th>
-                <th>Matériel</th>
-                <th>Date d'emprunt</th>
-                <th>Action</th>
+            <tr id="table-head">
+                <!-- Les entêtes seront générés dynamiquement -->
             </tr>
         </thead>
         <tbody id="emprunt-list">
@@ -37,6 +36,15 @@
         document.getElementById("logout-btn").addEventListener("click", function() {
             window.location.href = "/index.html";
         });
+        // Redurection vers la page de changement de mot de passe
+        document.getElementById("change-password-btn").addEventListener("click", function() {
+            window.location.href = "/updateMdp/";
+        });
+        //redirection vers la page d'ajout de matériel
+        document.getElementById("add-material-btn").addEventListener("click", function() {
+            window.location.href = "/ajouter/";
+        });
+        
     </script>
 
     <script src="mes_emprunt.js"></script>

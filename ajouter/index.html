@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter du Matériel</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='ajouter.css'>
+</head>
+<body>
+
+<div class="emprunt-container">
+    <h1>Ajouter du Matériel Arduino</h1>
+
+    <form id="emprunt-form">
+        <div class="form-group">
+            <label for="material">Matériel a ajouter</label>
+           
+            <input type="text" id="material" name="material" required>
+            
+        </div>
+
+        <button type="submit">Ajouter</button>
+    </form>
+
+    <!-- Message de retour -->
+    <div id="message" class="message"></div>
+
+    <a href="/mes_emprunt/">Retour</a>
+</div>
+
+<script src="ajouter.js"></script>
+</body>
+</html>

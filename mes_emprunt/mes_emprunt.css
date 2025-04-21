@@ -166,6 +166,44 @@ button.delete-btn:hover {
     transition: 0.3s ease-in-out;
 }
 
+/* Bouton de changement de mot de passe */
+#change-password-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+#change-password-btn:hover {
+    background: #5555d4;
+}
+
+/* Bouton pour ajouter du materiel */
+#add-material-btn {
+    position: absolute;
+    top: 15px;
+    right: 200px;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+#add-material-btn:hover {
+    background: #5555d4;
+}
+
 #logout-btn:hover {
     background: #c0392b;
 }

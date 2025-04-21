@@ -1,16 +1,15 @@
 document.addEventListener("DOMContentLoaded", async function () {
-    const userId = localStorage.getItem("userId"); // Récupérer l'ID utilisateur stocké
+    const userId = localStorage.getItem("userId");
     const messageDiv = document.getElementById("message");
     const empruntList = document.getElementById("emprunt-list");
+    const tableHead = document.getElementById("table-head");
 
-    // Vérifier si l'utilisateur est connecté
     if (!userId) {
         window.location.href = '/index.html';
         return;
     }
 
     try {
-        // Requête pour récupérer les emprunts
         const response = await fetch(`http://88.160.251.130:1211/emprunt/${userId}`);
 
         if (!response.ok) {
@@ -19,58 +18,70 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         const emprunts = await response.json();
 
-        // Vider la liste avant d'ajouter les nouveaux éléments
         empruntList.innerHTML = "";
+        messageDiv.textContent = "";
 
         if (emprunts.length === 0) {
-            messageDiv.textContent = "Aucun emprunt trouvé.";
             messageDiv.className = "info";
             return;
         }
 
-    // Afficher les emprunts dans le tableau
-       
-    emprunts.forEach(emprunt => {
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-            <td>${emprunt.id}</td>
-            <td>${emprunt.username || "N/A"}</td>
-            <td>${emprunt.materielle}</td>
-            <td>${new Date(emprunt.date_emprunt).toLocaleDateString()}</td>
-            <td>
-                <button class="delete-btn" data-id="${emprunt.id}">Supprimer</button>
-            </td>
+        const hasUsername = emprunts.some(e => e.username);
+
+        // Génération des en-têtes dynamiquement
+        tableHead.innerHTML = `
+            <th>ID</th>
+            ${hasUsername ? "<th>Nom d'utilisateur</th>" : ""}
+            <th>Matériel</th>
+            <th>Date d'emprunt</th>
+            ${hasUsername ? "<th>Action</th>" : ""}
         `;
-        empruntList.appendChild(tr);
-});
 
-
-        // Ajouter des gestionnaires d'événements pour les boutons "Supprimer"
-        document.querySelectorAll(".delete-btn").forEach(button => {
-            button.addEventListener("click", async (e) => {
-                const empruntId = e.target.getAttribute("data-id");
-
-                try {
-                    const deleteResponse = await fetch(`http://88.160.251.130:1211/emprunt/${empruntId}`, {
-                        method: "DELETE",
-                    });
-
-                    if (!deleteResponse.ok) {
-                        throw new Error("Erreur lors de la suppression de l'emprunt.");
-                    }
-
-                    // Supprimer la ligne du tableau après suppression
-                    e.target.closest("tr").remove();
-                    messageDiv.textContent = "Emprunt supprimé avec succès.";
-                    messageDiv.className = "success";
-                } catch (error) {
-                    messageDiv.textContent = error.message;
-                    messageDiv.className = "error";
-                }
-            });
+        emprunts.forEach(emprunt => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>${emprunt.id}</td>
+                ${hasUsername ? `<td>${emprunt.username}</td>` : ""}
+                <td>${emprunt.nom_materiel}</td>
+                <td>${new Date(emprunt.date_emprunt).toLocaleDateString()}</td>
+                ${hasUsername ? `
+                    <td>
+                        <button class="delete-btn" data-id="${emprunt.id}">Supprimer</button>
+                    </td>
+                ` : ""}
+            `;
+            empruntList.appendChild(tr);
         });
 
-        messageDiv.textContent = ""; // Réinitialiser les messages
+        // Ajouter des gestionnaires d'événements pour les boutons "Supprimer"
+        if (hasUsername) {
+            document.querySelectorAll(".delete-btn").forEach(button => {
+                button.addEventListener("click", async (e) => {
+                    const empruntId = e.target.getAttribute("data-id");
+
+                    try {
+                        const deleteResponse = await fetch(`http://88.160.251.130:1211/emprunt/${empruntId}/${userId}`, {
+                            method: "DELETE",
+                        });
+
+                        const result = await deleteResponse.json();
+
+                        if (!deleteResponse.ok) {
+                            throw new Error(result.message || "Erreur lors de la suppression.");
+                        }
+
+                        // Supprimer la ligne du tableau
+                        e.target.closest("tr").remove();
+                        messageDiv.textContent = "Emprunt supprimé avec succès.";
+                        messageDiv.className = "success";
+                    } catch (error) {
+                        messageDiv.textContent = error.message;
+                        messageDiv.className = "error";
+                    }
+                });
+            });
+        }
+
     } catch (error) {
         messageDiv.textContent = error.message;
         messageDiv.className = "error";

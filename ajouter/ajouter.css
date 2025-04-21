@@ -50,8 +50,7 @@ label {
     color: #555;
 }
 
-input,
-select {
+input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
@@ -60,8 +59,7 @@ select {
     transition: 0.3s ease-in-out;
 }
 
-input:focus,
-select:focus {
+input:focus {
     border-color: #667eea;
     outline: none;
     box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
@@ -110,3 +108,4 @@ a:hover {
         padding: 1.5rem;
     }
 }
+
