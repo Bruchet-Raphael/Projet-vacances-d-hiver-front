@@ -54,7 +54,7 @@ input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 50px;
     font-size: 1rem;
     transition: 0.3s ease-in-out;
 }
@@ -72,7 +72,7 @@ button {
     border: none;
     padding: 10px;
     font-size: 1rem;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
     transition: 0.3s ease-in-out;
 }
@@ -109,3 +109,13 @@ a:hover {
     }
 }
 
+.form-sections {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.form-sections form {
+    flex: 1;
+}

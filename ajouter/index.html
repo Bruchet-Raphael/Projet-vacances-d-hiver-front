@@ -8,25 +8,37 @@
 </head>
 <body>
 
-<div class="emprunt-container">
-    <h1>Ajouter du Matériel Arduino</h1>
-
-    <form id="emprunt-form">
-        <div class="form-group">
-            <label for="material">Matériel a ajouter</label>
-           
-            <input type="text" id="material" name="material" required>
-            
+    <div class="emprunt-container">
+        <h1>Gérer le Matériel Arduino</h1>
+    
+        <div class="form-sections">
+            <!-- Formulaire d'ajout -->
+            <form id="emprunt-form">
+                <div class="form-group">
+                    <label for="material">Matériel à ajouter</label>
+                    <input type="text" id="material" name="material" required>
+                </div>
+                <button type="submit">Ajouter</button>
+            </form>
+    
+            <!-- Formulaire de suppression -->
+            <form id="delete-form">
+                <div class="form-group">
+                    <label for="delete-material">Matériel à supprimer</label>
+                    <select id="delete-material" name="delete-material" required>
+                        <option value="">-- Sélectionnez un matériel --</option>
+                    </select>
+                </div>
+                <button type="submit">Supprimer</button>
+            </form>
         </div>
-
-        <button type="submit">Ajouter</button>
-    </form>
-
-    <!-- Message de retour -->
-    <div id="message" class="message"></div>
-
-    <a href="/mes_emprunt/">Retour</a>
-</div>
+    
+        <!-- Message de retour -->
+        <div id="message" class="message"></div>
+    
+        <a href="/mes_emprunt/">Retour</a>
+    </div>
+    
 
 <script src="ajouter.js"></script>
 </body>

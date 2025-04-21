@@ -72,7 +72,7 @@ button.delete-btn {
     color: white;
     border: none;
     padding: 8px 12px;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
     transition: 0.3s;
 }
@@ -122,7 +122,7 @@ button.delete-btn:hover {
     padding: 10px 15px;
     border: none;
     font-size: 1rem;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
     transition: 0.3s ease-in-out;
     text-decoration: none;
@@ -161,7 +161,7 @@ button.delete-btn:hover {
     background: #e74c3c;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
     transition: 0.3s ease-in-out;
 }
@@ -176,7 +176,7 @@ button.delete-btn:hover {
     background: #667eea;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
     transition: 0.3s ease-in-out;
 }
@@ -195,7 +195,7 @@ button.delete-btn:hover {
     background: #667eea;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
     transition: 0.3s ease-in-out;
 }
